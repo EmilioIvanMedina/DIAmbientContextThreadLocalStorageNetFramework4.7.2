@@ -41,9 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AmbientContextConfigurations\SampleServiceContext.cs" />
     <Compile Include="Implementations\SampleService.cs" />
     <Compile Include="Interfaces\ISampleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DIAmbientContextThreadLocalStorageDomain\DIAmbientContextThreadLocalStorageDomain.csproj">
+      <Project>{CF281C26-738D-45B2-90DF-99E4E8D4E731}</Project>
+      <Name>DIAmbientContextThreadLocalStorageDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

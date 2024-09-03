@@ -5,13 +5,13 @@ using System.Threading;
 
 namespace DIAmbientContextThreadLocalStorageInfrastructure.AmbientContextConfigurations
 {
-    public class SampleServiceContext
+    public class RoleServiceContext
     {
-        private static readonly ThreadLocal<ISampleService> _current = new ThreadLocal<ISampleService>();
+        private static readonly ThreadLocal<IRoleService> _current = new ThreadLocal<IRoleService>();
 
-        public static ThreadLocal<ISampleService> Current => _current;
+        public static ThreadLocal<IRoleService> Current => _current;
 
-        public static IDisposable BeginScope(ISampleService service)
+        public static IDisposable BeginScope(IRoleService service)
         {
             var previousService = _current.Value;
             _current.Value = service;

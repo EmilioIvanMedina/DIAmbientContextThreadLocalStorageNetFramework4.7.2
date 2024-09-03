@@ -9,7 +9,11 @@ namespace DIAmbientContextThreadLocalStorageInfrastructure.AmbientContextConfigu
     {
         private static readonly ThreadLocal<IRoleService> _current = new ThreadLocal<IRoleService>();
 
-        public static ThreadLocal<IRoleService> Current => _current;
+        public static IRoleService Current
+        {
+            get => _current.Value;
+            set => _current.Value = value;
+        }
 
         public static IDisposable BeginScope(IRoleService service)
         {

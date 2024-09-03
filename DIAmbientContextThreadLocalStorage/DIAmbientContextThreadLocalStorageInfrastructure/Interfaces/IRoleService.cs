@@ -1,8 +1,13 @@
-﻿namespace DIAmbientContextThreadLocalStorageInfrastructure.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace DIAmbientContextThreadLocalStorageInfrastructure.Interfaces
 {
     public interface IRoleService
     {
-        string GetUserRole();
-        bool UserHasRole(string role);
+        Task<string> GetUserRole();
+
+        Task SetUserRole(string roleName);
+
+        Task<bool> UserHasRole(string role);
     }
 }

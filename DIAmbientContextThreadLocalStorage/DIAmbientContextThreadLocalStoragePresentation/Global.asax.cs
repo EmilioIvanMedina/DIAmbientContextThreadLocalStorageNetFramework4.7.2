@@ -1,4 +1,7 @@
-﻿using DIAmbientContextThreadLocalStoragePresentation.App_Start;
+﻿using DIAmbientContextThreadLocalStorageInfrastructure.AmbientContextConfigurations;
+using DIAmbientContextThreadLocalStorageInfrastructure.Implementations;
+using DIAmbientContextThreadLocalStorageInfrastructure.Interfaces;
+using DIAmbientContextThreadLocalStoragePresentation.App_Start;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,6 +29,14 @@ namespace DIAmbientContextThreadLocalStoragePresentation
             ServiceProvider = services.BuildServiceProvider();
 
             DependencyResolver.SetResolver(new ServiceProviderDependencyResolver(ServiceProvider));
+        }
+
+        private void ConfigureServices(IServiceCollection services)
+        {
+            services.AddTransient<IRoleService, RoleService>();
+
+            // register the Action Filer in GlobalFilers
+            GlobalFilters.Filters.Add(new RoleServiceContext());
         }
     }
 }
